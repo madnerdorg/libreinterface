@@ -1,10 +1,14 @@
 # LibreInterface
+![](https://github.com/madnerdorg/libreinterface/raw/master/doc/interface.png)
+
 LibreInterface, let's you **control Arduinos** from your **browser** and create **local web interface**.    
 As for now, this is just a proof of concept, a lot still need to be done !
 
 * LibreInterface doesn't need an **internet connection** or even a **connection** to works. 
 * All changes are saved **inside your browser**.
-* Integrated **code editor**
+* Integrated **code editor**   
+![](https://github.com/madnerdorg/libreinterface/raw/master/doc/interface_codeeditor.png)
+
 * **Load/Save** your interface as a **file** and share it!
 
 # Interface
