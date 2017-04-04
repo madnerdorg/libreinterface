@@ -1,3 +1,9 @@
+/*
+
+Manage LocalStorage Applications
+
+*/
+
 //Load application name from url (ex: index.html?app=leds)
 app_name = getUrlParameter("app");
 
@@ -46,6 +52,10 @@ function save_application(){
 	add_application();
 }
 
+function save_currentState(){
+    localStorage.setItem(app_name + "_code", $("#application").html());
+}
+
 //Load code from codemirror editor inside application
 function load_application(){
 	//console.log(custom_code_editor.getValue());
@@ -82,8 +92,9 @@ function inject_ext_html(link){
 }
 
 function inject_localStorage(link){
-  $.get( link, function( data ) {
-    backup = JSON.parse(data);
+  $.get( link, function( backup ) {
+    //backup = JSON.parse(data);
+    //backup = data
     for (var key in backup){
       //console.log(backup);
      var value = decodeURIComponent(unescape(backup[key]));
@@ -91,6 +102,21 @@ function inject_localStorage(link){
    }
  });
 
+}
+
+function inject_localStorage_and_restart(link){
+  $.get( link, function( backup ) {
+    //backup = JSON.parse(data);
+    //backup = data
+    for (var key in backup){
+      //console.log(backup);
+     var value = decodeURIComponent(unescape(backup[key]));
+     window.localStorage.setItem(key, value);
+
+   }
+   location.reload();
+ });
+  
 }
 
 /* Local Storage Manager */
@@ -170,7 +196,7 @@ function download_localStorage(){
     backup[key] = escape(encodeURIComponent(value));
   }
   var json = JSON.stringify(backup);
-  var base = btoa(json);
+  var base = btoa(unescape(encodeURIComponent(json)));
   var href = 'data:text/javascript;charset=utf-8;base64,' + base;
   var link = document.createElement('a');
   link.setAttribute('download', 'applications.json');

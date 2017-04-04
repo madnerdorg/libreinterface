@@ -1,3 +1,10 @@
+  /*
+  Libre Interface - Code Editor Modal
+  // Application Menu (Modal Remove/Add/Erase)
+  // Code Editor Modal
+
+  */
+
   //Show bottom menu
   function toggleMenu(){
     $('.ui.labeled.icon.sidebar').sidebar('toggle');
@@ -63,6 +70,7 @@
     //get custom code inside codemirror
     custom_code = $("#application").html();
     custom_code_editor.setValue(custom_code);
+     
     
     //Show up the modal
     $('.code-modal').modal('setting',{
@@ -71,6 +79,7 @@
       },
       onVisible: function(){
         custom_code_editor.refresh();
+
       }
     }).modal('show');
 

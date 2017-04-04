@@ -1,3 +1,7 @@
+/*
+Manage GET arguments in URL
+*/
+
 //Append to url and refresh page - Source:http://stackoverflow.com/questions/5997450/append-to-url-and-refresh-page
 function add_params(url, param, value){
 	var hash       = {};

@@ -1,3 +1,11 @@
+/*
+Startup scripts for code editor
+
+// Prepare CodeMirror
+// Prepare Menu generated using localStorage
+// Check if this is a mobile/desktop computer
+*/
+
 //We generate a codeMirror at startup
 $(document).ready(function(){
   var mixedMode = {
@@ -8,12 +16,7 @@ $(document).ready(function(){
   theme: "zenburn"
 });
 
- if(static_website){
-  console.log(static_website);
-  $(".static_alert").show();
-}
-  //custom_code_editor.setSize("100%", "100%"); 
-
+  custom_code_editor.setSize("100%","100%");
   //Append Menu
   for (var i in madnerd_apps){
     menu_item_html = '<a href="?app='+madnerd_apps[i]+'" id="app_'+madnerd_apps[i]+'" class="item">'+madnerd_apps[i]+'</a>';
@@ -43,8 +46,4 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
   console.log("You are on a Computer");
 }
 
-// Error Message for edge browser because it isn't capable of managing stuff correctly... SAD!
-if (/Edge/i.test(navigator.userAgent)){
-  console.log("Microsoft Edge detected");
-  alert("LocalStorage doesn't works with Microsoft Edge, use Firefox / Chrome instead");
-}
+
