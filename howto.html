@@ -30,7 +30,6 @@
 
     	//Connect websocket
 		led = connect_led();
-
 		//If connection succeed, we get the status of the led
 		//And we change the color of arduino to green
 		function connected(){
@@ -78,31 +77,35 @@
       			arduino_switch.removeAttribute("checked");
     		}
   		}
+
+  		//Some scripts need to be executed after the page is rendered
+  		//There are at the end of the code
+  		//
 	 </script>
 
 	 <div class="ui text container">
+	 <a href="." class="ui button black">Return to demos</a>
 	 	<!-- Introduction -->
-	 	Let's see how <b>LibreConnect</b> works with our <b>first device</b>.<br>
+	 	<br>Let's see how <b>LibreConnect</b> works with our <b>first device</b>.<br>
 	 	We will control the embedded led on an arduino<br>
 
 	 	<!-- Controls -->
 	 	<div class="ui header arduino_state label">Arduino</div><br>
 	 	<div class="ui slider checkbox">
-	 		<input id="arduino_switch" onchange="change_state()" type="checkbox" checked="checked">
+	 		<input id="arduino_switch" onchange="change_state()" type="checkbox">
 	 		<label>Led</label>
 	 	</div>
 
 
 	 	<!-- Software needed -->
 	 	<h1 class="ui header">Software needed</h1>
-	 	<li><a href="https://www.arduino.cc/en/Main/Donate">Arduino</a></li>
-	 	<li><a href="https://github.com/madnerdorg/libreconnect/releases">LibreConnect</a></li>
-	 	<li><a href="https://github.com/madnerdorg/test/">Test Device code</a></li>
+	 	<li><a href="https://github.com/madnerdorg/libreconnect/releases">Connector : LibreConnect</a></li>
+	 	<li><a href="https://github.com/madnerdorg/test/">Arduino sketch: test</a></li>
 	 	<!-- How-To -->
 	 	<h1 class="ui header">How-To</h1>
 	 	<ul>
-	 		<li>Upload <a href="https://github.com/madnerdorg/test/archive/master.zip">test/test.ino</a> on your arduino</li>
-	 		<li>Open Libreconnect - <b>usb_scanner.exe</b></li>
+	 		<li>Upload <a href="https://github.com/madnerdorg/test/archive/master.zip">test/test.ino</a> using arduino</li>
+	 		<li>Open Libreconnect</li>
 	 	</ul>
 
 	 	<!-- Components -->
@@ -191,12 +194,16 @@ void loop() {
 </code>
 </pre>
 </div>
-
 </div>
+
+
+
 
 </body>
 
 <script>
+	//Get switch
+	arduino_switch = document.getElementById('arduino_switch');
 	//Make accordion active (this need to go at the end of the code to works)
 	$('.ui.accordion').accordion();
 	//Highlight Code
