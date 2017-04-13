@@ -1,11 +1,12 @@
 # LibreInterface
+LibreInterface, let's you **control Arduinos** from your **browser** and create **local web interface**.    
+As for now, this is just a proof of concept, a lot still need to be done !   
 ![Screenshot of libreinterface](https://github.com/madnerdorg/libreinterface/raw/master/doc/libre_interface_demo.jpg)
 
 [Demo](http://madnerd.org/interface)     
 [Download](https://github.com/madnerdorg/libreinterface/archive/master.zip)
 
-LibreInterface, let's you **control Arduinos** from your **browser** and create **local web interface**.    
-As for now, this is just a proof of concept, a lot still need to be done !   
+
 
 * LibreInterface doesn't need an **internet connection** or even a **connection** to works.    
 ![nowifi](https://github.com/madnerdorg/libreinterface/raw/master/doc/noconnect.png) 
