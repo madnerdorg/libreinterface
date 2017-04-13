@@ -1,5 +1,8 @@
 # LibreInterface
-![Libre Interface](https://github.com/madnerdorg/libreinterface/raw/master/doc/interface.png)
+![Screenshot of libreinterface](https://github.com/madnerdorg/libreinterface/raw/master/doc/libre_interface_demo.jpg)
+
+[Demo](http://madnerd.org/interface)     
+[Download](https://github.com/madnerdorg/libreinterface/archive/master.zip)
 
 LibreInterface, let's you **control Arduinos** from your **browser** and create **local web interface**.    
 As for now, this is just a proof of concept, a lot still need to be done !   
@@ -8,21 +11,17 @@ As for now, this is just a proof of concept, a lot still need to be done !
 ![nowifi](https://github.com/madnerdorg/libreinterface/raw/master/doc/noconnect.png) 
 
 * All changes are saved **inside your browser** using localStorage.
-* Integrated **code editor**   
-![codemirror](https://github.com/madnerdorg/libreinterface/raw/master/doc/interface_codeeditor.png)
-* **Load/Save** your interface as a **json file** and share it!    
-![codeditor](https://github.com/madnerdorg/libreinterface/raw/master/doc/interface_upload.png)
 
 # Interface
 The interface, is **serverless**, this means you can download it and open **index.html** and it will works.        
 It was made using [semantic UI](http://semantic-ui.com/) an human-friendly development platform    
-All interactions with devices are made using **websockets**    
-All interface code are saved inside the localStorage of your browser, which means you can customize
+All interactions with devices are made using **websockets** thanks to [libreconnect](http://github.com/madnerdorg/libreconnect)    
+All settings/code are saved inside the localStorage of your browser, which means you can customize
 your interface.   
-[Download](https://github.com/madnerdorg/libreinterface/archive/master.zip)
 
 # LibreConnect
 Connector is a portable program, you can use it to transform an arduino to a connected devices thanks to websockets.   
+No installation/settings are required.         
 (https://github.com/madnerdorg/libreconnect/)
 
 #Licence
