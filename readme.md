@@ -24,10 +24,10 @@ Connector is a portable program, you can use it to transform an arduino to a con
 No installation/settings are required.         
 (https://github.com/madnerdorg/libreconnect/)
 
-#Licence
-Markdown-js : MIT (https://github.com/evilstreak/markdown-js)
-Code Mirror: MIT (https://codemirror.net/)    
-Semantic UI: MIT (https://semantic-ui.com/)   
-Highlight-JS: BSD 3 (https://highlightjs.org/)    
-Semantic-UI-Range: MIT (https://github.com/tyleryasaka/semantic-ui-range)
-Jquery: Apache v2 (http://jquery.com/)       
+# Licences
+* Markdown-js : MIT (https://github.com/evilstreak/markdown-js)
+* Code Mirror: MIT (https://codemirror.net/)    
+* Semantic UI: MIT (https://semantic-ui.com/)   
+* Highlight-JS: BSD 3 (https://highlightjs.org/)    
+* Semantic-UI-Range: MIT (https://github.com/tyleryasaka/semantic-ui-range)
+* Jquery: Apache v2 (http://jquery.com/)       
