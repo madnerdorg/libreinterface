@@ -1,15 +1,48 @@
 # LibreInterface
-LibreInterface, let's you **control Arduinos** from your **browser** and create **local web interface**.    
-As for now, this is just a proof of concept, a lot still need to be done !       
-[Demo](http://madnerd.org/interface)         
-[Download](https://github.com/madnerdorg/libreinterface/archive/master.zip)      
-![Screenshot of libreinterface](https://github.com/madnerdorg/libreinterface/raw/master/doc/libre_interface_demo.jpg)
+**Control electronics devices** from your **browser** and create **local web interface**.    
+All you need to know is how to code in **HTML/JS** and **Arduino C**.   
+You just need a [code editor](https://code.visualstudio.com/download) for the interface and [arduino](https://www.arduino.cc/en/main/software) for your [microcontrollers](https://en.wikipedia.org/wiki/Microcontroller). 
+## [Try it!](http://madnerd.org/interface)         
+## [Download](https://github.com/madnerdorg/libreinterface/archive/master.zip)      
 
+![Screenshot of libreinterface](https://github.com/madnerdorg/libreinterface/raw/master/doc/libre_interface_demo.jpg)
 
 * LibreInterface doesn't need an **internet connection** or even a **connection** to works.    
 ![nowifi](https://github.com/madnerdorg/libreinterface/raw/master/doc/noconnect.png) 
 
 * All changes are saved **inside your browser** using localStorage.
+
+# Devices
+![Devices](https://github.com/madnerdorg/libreinterface/raw/master/doc/devices.jpg)  
+
+Here is the devices currently available: 
+
+* [test](https://github.com/madnerdorg/test) : embedded led
+* [leds](https://github.com/madnerdorg/leds) : neopixels leds
+* [radio433](https://github.com/madnerdorg/radio433) : 433Mhz appliances
+* [openlight](https://github.com/madnerdorg/openlight) : Milight bulbs
+* [buzzer](https://github.com/madnerdorg/buzzer)
+* [temphum](https://github.com/madnerdorg/dht11) : DHT11     
+
+Each **devices repo** are provided with     
+* Instructions in **english** and **french**
+* Schematics
+* List of components
+* A 3D printed case
+* Arduino code/libraries compatible for arduino/platformio.
+
+These devices are meant to be **easy** and **cheap** to replicate, as for now there are just prototype.    
+If you want to improve them, just fork the repo.
+
+# Tools needed
+[Tools](https://github.com/madnerdorg/libreinterface/raw/master/doc/tools.jpg)
+I use as less tools as possible to build my devices and only use anything that doesn't require a workshop (for the noise or costly equipment).
+
+* Arduino (I recommended arduino nano ch340g clone)
+* Wires : 30AWG
+* Soldering Iron
+* 3D printer
+* Removable Adhesive (blu-tack/patafix...) / hot glue.
 
 # Interface
 The interface, is **serverless**, this means you can download it and open **index.html** and it will works.        
