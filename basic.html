@@ -1,0 +1,41 @@
+<script>
+/*
+With reconnecting-websocket.min.js
+var ws = new ReconnectingWebSocket('ws://localhost:42000');
+*/
+
+/*
+ Without reconnecting-websocket.min.js
+*/
+var ws = new WebSocket('ws://localhost:42000');
+
+ws.debug = true;
+ws.onopen = connected;
+ws.onmessage = message_received;
+ws.onerror = error;
+ws.onclose = closed;
+
+//When your arduino is connected
+function connected(){
+	alert("Connected");
+}
+
+function error(){
+    alert("Connection: error");
+}
+
+function closed(){
+    alert("Connection closed");
+}
+
+//When an arduino send a message, do this
+function message_received(event){
+       alert(event.data);
+}
+
+</script>
+
+<button onclick="ws.send('ON')">ON</button>
+<button onclick="ws.send('OFF')">OFF</button>
+<button onclick="ws.send('/status')">/status</button>
+<button onclick="ws.send('/info')">/info</button>
