@@ -381,8 +381,8 @@
 			console.log("Display radio433 settings");
 			$("#radio433_disable").prop( "checked", radio433_settings.disable);
 			$("#radio433_usb").prop( "checked", radio433_settings.usb);
-			$("#radio433_name").val(openlight_settings.name);
-			$("#radio433_ip").val(openlight_settings.ip);
+			$("#radio433_name").val(radio433_settings.name);
+			$("#radio433_ip").val(radio433_settings.ip);
 
 			if($("#radio433_disable")[0].checked){
 				disableMode("radio433",true);
@@ -422,7 +422,7 @@
 	</div>
 
 	<div class="openlight-modal ui modal">
-		<div class="header"><a href="https://github.com/madnerdorg/openlight">OpenLight</a></div>
+		<div class="header"><a href="https://github.com/madnerdorg/openlight">OpenLight (Manual)</a></div>
 		<div class="content">
 			<div class="ui form">
 				<div class="field">
@@ -451,7 +451,7 @@
 	</div>
 
 	<div class="radio433-modal ui modal">
-		<div class="header"><a href="https://github.com/madnerdorg/radio433">Radio433</a></div>
+		<div class="header"><a href="https://github.com/madnerdorg/radio433">Radio433 (Manual)</a></div>
 		<div class="content">
 			<div class="ui form">
 				<div class="field">
@@ -480,7 +480,7 @@
 	</div>
 
 	<div class="control-modal ui modal">
-		<div class="header">Name</div>
+		<div class="header">Device</div>
 		<div class="content">
 			<div class="ui form">
 				<div class="field">
@@ -502,10 +502,13 @@
 			</div>
 		</div>
 	</div>
+
 </div>
 
 <div id="buttons_zone" class="ui container"></div>
 <br><br>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/JnwSQTdr2jQ" frameborder="0" allowfullscreen></iframe>
+<br>
 <a href="index.html" class="ui button black">Return to demos</a>
 </body>
 <script>
