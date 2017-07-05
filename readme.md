@@ -1,4 +1,4 @@
-[Français](https://madnerdorg/libreinterface/readme_fr)
+[Français](https://madnerdorg.github.io/libreinterface/readme_fr)
 
 ![LibreInterface banner](doc/libreinterface.png)   
 [Arduino Applications](http://madnerd.org/interface) / [Code Editor](http://madnerd.org/interface/editor) / [Download](https://github.com/madnerdorg/libreinterface/archive/master.zip)  
