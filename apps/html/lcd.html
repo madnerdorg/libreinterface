@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <title>Blank Page</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="core/lib/Semantic-UI-CSS-master/semantic.min.css">
+
+  <!-- Semantic UI --> 
+  <script src="core/lib/jquery/jquery-3.1.1.min.js"></script>
+  <script src="core/lib/Semantic-UI-CSS-master/semantic.min.js"></script>
+
+  <!-- Connector -->
+  <script src="core/lib/reconnecting-websocket/reconnecting-websocket.min.js"></script>
+  <script src="core/websockets.js"></script>
+
+  <style>
+    .lcdInput {
+      display: flex;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 315px;
+      height: 60px;
+      position: relative;
+      cursor: crosshair;
+      opacity: 1;
+      margin: 2;
+      padding: 7px;
+      border: 5px solid black;
+      font-size: 22px;
+      font-family: monospace;
+      color: white;
+      letter-spacing: 5px;
+      background-color:#132b49;
+      -webkit-box-shadow: 3px 3px 10px 0 rgba(21,31,73,1) inset;
+      box-shadow: 3px 3px 10px 0 rgba(21,31,73,1) inset;
+      white-space: pre;
+    }
+
+  </style>
+
+  <script>
+    url = "ws://localhost:80";
+    lcd = new ReconnectingWebSocket(url);
+    lcd.onmessage = showMessage;
+    lcd.onerror = errorMessage;
+    
+  
+    
+    function showMessage(event){
+    //console.log(event.data);
+    lcdString = event.data;
+    linePos = lcdString.substring(0,3);
+    console.log(linePos);
+    $("#message").prop('disabled', true);
+    if(linePos == "l1:"){
+      $(".lcdInput").css("background-color","#6c87dd");
+      $(".lcdInput").html(htmlEscape(lcdString.substring(3)));
+      console.log(lcdString.substring(3));
+    }
+    if(linePos == "l2:"){
+      line1 = $(".lcdInput").html();
+      $(".lcdInput").html(htmlEscape(line1 + "\n" + lcdString.substring(3)));
+      console.log(lcdString.substring(3));
+    }
+
+    if(lcdString === "BACKLIGHT:OFF"){
+      erase();
+      $("#message").prop('disabled', false);     
+      console.log(lcdString);
+    }
+  }
+  
+  function erase(){
+    $(".lcdInput").html("");
+    $(".lcdInput").css("background-color","#132b49");
+    //$("#lcd2").val("");
+  }
+  
+  function errorMessage(){
+    $(".lcdInput").html("Sorry LCD \nis offline :-(");
+    $(".lcdInput").css("background-color","red");
+    $("#message").prop('disabled', true);
+    //$("#lcd2").val("Check out later");
+  }
+
+  function htmlEscape(str) {
+    return str
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+  }
+</script>
+
+</head>
+
+<body>
+  <h1 class="header">LCD 16x2</h1>
+  <p>
+    Write a message here, it will be displayed on my 16x2 LCD for 5 seconds<br>
+    You can see the message send by others
+  </p>
+
+  <div class="ui big input">
+    <input id="message" size="33" type="text" maxlength="32" placeholder="Write Message here">
+  </div>
+  <button class="ui big button black" onclick="lcd.send($('#message').val())">Send</button>
+  <br>
+  <br>
+  <div class="lcdInput">
+  </div>
+</body>
+<script>
+  $("#message").keypress(function(event) {
+    if (event.which == 13) {
+        lcd.send($('#message').val());
+     }
+    });
+</script>
+
+</html>
+
+

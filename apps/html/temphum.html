@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<title>Sensor</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="core/lib/Semantic-UI-CSS-master/semantic.min.css">
+
+	<!-- Semantic UI --> 
+	<script src="core/lib/jquery/jquery-3.1.1.min.js"></script>
+	<script src="core/lib/Semantic-UI-CSS-master/semantic.min.js"></script>
+
+	<!-- Connector -->
+	<script src="core/lib/reconnecting-websocket/reconnecting-websocket.min.js"></script>
+	<script src="core/websockets.js"></script>
+
+	<script>
+		cold = 19;
+		confort = 23;
+		hot = 28;
+		veryhot = 32;
+
+		if(localStorage.temphum_ip === undefined){
+			console.log("No ip saved");
+			localStorage.setItem("temphum_ip","localhost");
+			ip = "localhost";
+		} 
+
+		ip = localStorage.getItem("temphum_ip");
+		console.log("Get ip from localStorage:" + ip);
+
+
+		sensor = new ReconnectingWebSocket("ws://"+ip+":" + ports.temphum);
+		sensor.onmessage = readSensor;
+		sensor.onerror = connectionFailed;
+		sensor.onclose = connectionClosed;
+		sensor.onopen = connectionStarted;
+
+		function saveIP(){
+			ip = $("#ip").val();
+			console.log("Saved ip:" + ip);
+			localStorage.setItem("temphum_ip",ip);
+		}
+
+		function connectionStarted(){
+			sensor.send("/info");
+		}
+
+		function connectionClosed(){
+    		//alert("Connection closed");
+		}
+
+		function connectionFailed(){
+  	  		//alert("Connection failed");
+  		}
+
+  	function readSensor(event){
+  		sensor_value = event.data.split(";");
+  		humidity = sensor_value[0];    
+  		temperature = sensor_value[1];
+  		$(".progress.hum").progress({ 
+  			percent:humidity
+  		});
+
+  		display_temp(temperature);
+  	}
+
+  	function display_temp(temp){
+  		var temp_icon;
+
+  		if(temp < cold){
+  			temp_icon = "big blue empty thermometer icon";
+  		}
+
+  		if(temp >= cold && temp < confort){
+  			temp_icon = "big teal quarter thermometer icon";
+  		}
+
+  		if(temp >= confort && temp < hot){
+  			temp_icon = "big orange yellow half thermometer icon";
+  		}
+
+  		if(temp >= hot && temp < veryhot){
+  			temp_icon = "big red three quarters thermometer icon";
+  		}
+
+  		if(temp >= veryhot){
+  			temp_icon = "big brown full quarters thermometer icon";
+  		}
+
+  		$("#temp_icon").attr('class', temp_icon);
+  		$("#temp_icon").html(temp+"°C");
+  	}
+  </script>
+
+</head>
+
+<body>
+	<div class="ui container">
+		<div class="ui segment">
+			<div class="ui header"><a href="https://github.com/madnerdorg/temphum">Temperature / Humidity Sensor (Manual)</a></div>
+			<div class="ui form">
+				<div class="field">
+					<input id="ip" type="text" onblur="saveIP()" placeholder="pi.local">
+				</div>
+			</div>
+		</div>
+		<div class="ui inverted segment">
+			<div class="ui inverted blue hum progress active" data-percent="47">
+				<div class="bar" style="transition-duration: 300ms; width: 47%;">
+					<div class="progress active">... Loading ... </div>
+				</div>
+				<div class="label">Humidité</div>
+			</div>
+		</div>
+
+		<div class="ui inverted segment">
+			<h1>
+				<div class="value">
+					<i id="temp_icon" class="big orange yellow half thermometer icon">...</i> 
+				</div>
+			</h1>
+		</div>
+		<button class="ui red button" onclick="sensor.send('@poweroff')";>Power Off</button>
+		<button class="ui yellow button" onclick="sensor.send('@reboot')";>Reboot</button>
+		<a href="index.html" class="ui button black">Return to demos</a>
+	</div>
+
+</body>
+<script>
+		$("#ip").val(ip);
+</script>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<title>Midi Controls</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="core/lib/Semantic-UI-CSS-master/semantic.min.css">
+
+	<!-- Semantic UI --> 
+	<script src="core/lib/jquery/jquery-3.1.1.min.js"></script>
+	<script src="core/lib/Semantic-UI-CSS-master/semantic.min.js"></script>
+
+	<!-- Connector -->
+	<script src="core/lib/reconnecting-websocket/reconnecting-websocket.min.js"></script>
+	<script src="core/websockets.js"></script>
+	<script src="core/lib/webmidi-master/webmidi.min.js"></script>
+
+	<script>
+
+	ip = "127.0.0.1";
+	touchpad = new ReconnectingWebSocket('ws://'+ip+':42008');
+	touchpad.onmessage = sendMidi;
+  midi_instruments = [];
+	max_time =25;
+	last_message = 0;
+  	//console.log(last_message);
+  	max_retry = 100;
+  	retry = 0;
+
+    controls = {
+      1:"D#2",
+      2:"D2",
+      3:"C#2",
+      4:"C2",
+      5:"B1",
+      6:"A#1",
+      7:"A1",
+      8:"G#1",
+      9:"G1",
+      10:"F#1",
+      11:"F1",
+      12:"E1",
+      13:"D#1",
+      14:"D1",
+      15:"C#1",
+      16:"C1"
+    };
+
+  	//Send a message to the buzzer,
+  	//This can be improve to avoid noteoff when you play fast.
+  	function sendMidi(event){
+  		console.log(event.data);
+      var button_pressed = event.data; 
+      console.log(controls[button_pressed]);
+      //keyboard.sendControlChange(86, controls[button_pressed], 1);
+  	  keyboard.playNote(controls[button_pressed]);
+    }
+
+  	//Connect midi port to application
+  	function addKeyboard(name){
+  		if(typeof keyboard !== 'undefined'){keyboard.removeListener();}
+  		keyboard = WebMidi.getOutputByName(name);
+    	
+    }
+
+    WebMidi.enable(function (err) {
+
+    	$.each(WebMidi.outputs, function(i, input){
+    		//console.log(input);
+    		midi_instruments.push({
+    			value:input.name,
+    			text:input.name,
+    			name:input.name
+    		});
+    	});
+
+
+    	$('.ui.dropdown').dropdown('setup menu', {values: midi_instruments});
+    	$(".ui.dropdown").dropdown({
+    		onChange:function(value,text){
+    			addKeyboard(value);
+    		}
+    	});
+
+
+    	//console.log(midi_instruments);
+    	
+    	
+    });
+
+
+
+</script>
+
+</head>
+
+<body>
+	<div class="ui container">
+  <a href="index.html" class="ui button black">Return to demos</a>
+		<div class="ui raised segment">
+			<div class="ui centered aligned header"> <a href="https://github.com/madnerdorg/touchpad">Midi touchpad</a> </div>
+			<div class="ui fluid selection dropdown">
+				<input type="hidden" name="midi_inputs">
+				<i class="dropdown icon"></i>
+				<div class="default text">Midi output</div>
+				<div class="menu">
+				</div>
+			</div>
+		</div>
+		<div class="ui raised segment">
+			<div class="ui centered aligned header"> Wiring </div>
+			<ul>
+        <a href="https://github.com/madnerdorg/touchpad">Code / Instructions</a>
+				
+			</ul>
+		
+		</div>
+
+	</div>
+</body>
+<script>
+
+
+
+</script>
+</html>
