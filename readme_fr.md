@@ -1,7 +1,7 @@
 [English](https://madnerdorg.github.io/libreinterface/)
 
 ![LibreInterface banner](doc/libreinterface.png)   
-[Arduino Applications](http://madnerd.org/interface) / [Code Editor](http://madnerd.org/interface/editor) / [Download](https://github.com/madnerdorg/libreinterface/archive/master.zip)      
+[Applications Arduino](http://madnerd.org/interface) / [Editeur de code](http://madnerd.org/interface/editor) / [Télécharger](https://github.com/madnerdorg/libreinterface/archive/master.zip)      
 # C'est quoi LibreInterface ?
 LibreInterface est une application web pour créer des pages web statique.
 Vous pouvez l'utiliser pour créer des pages web local, des télécommandes / tableaux de bord pour des arduino (à l'aide des examples fourni) et les partager en tant que fichier json.     
