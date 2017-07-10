@@ -1,7 +1,6 @@
 [English](https://madnerdorg.github.io/libreinterface/)
 
-
-![LibreInterface banner](doc/libreinterface.png) 
+![LibreInterface banner](doc/libreinterface.png)     
 [Applications Arduino](http://madnerd.org/interface) / [Éditeur de code](http://madnerd.org/interface/editor) / [Télécharger](https://github.com/madnerdorg/libreinterface/archive/master.zip) 
 # C'est quoi LibreInterface ?
 LibreInterface est une application web pour créer des pages web statiques.

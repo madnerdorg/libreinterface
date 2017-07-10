@@ -1,6 +1,7 @@
 [Français](https://madnerdorg.github.io/libreinterface/readme_fr)
 
-![LibreInterface banner](doc/libreinterface.png)  [Arduino Applications](http://madnerd.org/interface) / [Code Editor](http://madnerd.org/interface/editor) / [Download](https://github.com/madnerdorg/libreinterface/archive/master.zip) 
+![LibreInterface banner](doc/libreinterface.png)   
+[Arduino Applications](http://madnerd.org/interface) / [Code Editor](http://madnerd.org/interface/editor) / [Download](https://github.com/madnerdorg/libreinterface/archive/master.zip) 
 
 - [What is LibreInterface ?](#what-is-libreinterface-)
 - [Applications](#applications)
