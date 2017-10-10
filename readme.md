@@ -21,7 +21,8 @@ LibreInterface is bundled with a lot of useful libraries, so it can work even wi
 * Highcharts (Create charts)
 * Reconnecting Websocket (auto reconnect websocket)
 
-# Applications ## Example applications for libreConnect
+# Applications 
+## Example applications for libreConnect
 There are examples of remotes, applications for my [arduino devices](http://madnerdorg.github.io/libreconnect)  ![Screenshot of libreinterface](doc/libre_interface_demo.jpg)
 
 ## Code your webpage in a text editor
